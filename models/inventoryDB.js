@@ -1,3 +1,5 @@
+// getting data from DB
+
 const db = require('../config/connection');
 
 module.exports = {

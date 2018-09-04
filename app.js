@@ -1,6 +1,8 @@
+// bringing in express & logger
 const express = require('express');
 const logger = require('morgan');
 
+// setting up development port & environment
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -8,11 +10,13 @@ const app = express();
 
 app.use(logger('dev'));
 
+
+// ROUTES
 app.get('/', (req, res) => {
 	res.json({message: "server started"})
 });
 
-app.use('*', (req, res) => {
+app.use('*', (req, res) => {            // route error handling
 	res.status(400).json({
 		error: 'Error, not found'
 	});

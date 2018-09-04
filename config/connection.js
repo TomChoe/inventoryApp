@@ -1,3 +1,5 @@
+// importing pg-promise library for postgres
+
 const pgp = require('pg-promise')();
 const dbConfig = require('../config/dbConfig');
 
