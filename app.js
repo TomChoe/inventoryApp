@@ -1,6 +1,7 @@
 // bringing in express & logger
 const express = require('express');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 
 // router
 const productRouter = require('./routes/productRoutes');
@@ -11,8 +12,13 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const app = express();
 
-app.use(logger('dev'));
+app.set('view engine', 'ejs');
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
 
 // ROUTES
 app.use('/inventory', productRouter);

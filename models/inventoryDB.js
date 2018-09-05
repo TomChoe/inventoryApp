@@ -7,13 +7,20 @@ module.exports = {
 		return db.any('SELECT * FROM products ORDER BY id')
 	},
 
+	findProduct(id) {
+		return db.one(`SELECT *
+					   FROM products
+					   WHERE id = $1`, id)
+	},
+
 	saveProduct(product) {
 		return db.one(`INSERT INTO products (product_name, product_quantity)
-					   VALUES ($/product_name/, $/product_quantity/
+					   VALUES ($/product_name/, $/product_quantity/)
 					   RETURNING *`, product);
 	},
 
 	updateProduct(product) {
+		console.log('inside model -> ', product)
 		return db.one(`UPDATE products SET
 				  	   product_name = $/product_name/,
 				   	   product_quantity = $/product_quantity/
