@@ -2,6 +2,9 @@
 const express = require('express');
 const logger = require('morgan');
 
+// router
+const productRouter = require('./routes/productRoutes');
+
 // setting up development port & environment
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -12,6 +15,8 @@ app.use(logger('dev'));
 
 
 // ROUTES
+app.use('/inventory', productRouter);
+
 app.get('/', (req, res) => {
 	res.json({message: "server started"})
 });
