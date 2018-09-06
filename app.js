@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 app.use('/inventory', productRouter);
 
 app.get('/', (req, res) => {
-	res.json({message: "server started"})
+	res.json({message: "server started!!"})
 });
 
 app.use('*', (req, res) => {            // route error handling
